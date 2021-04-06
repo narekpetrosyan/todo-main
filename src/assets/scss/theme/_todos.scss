@@ -1,0 +1,148 @@
+.todos {
+  flex: 0;
+  height: 100%;
+  position: relative;
+  border-radius: $defBRadius;
+  background: $lighterColor;
+  transform: translateX(100%);
+  overflow: auto;
+  z-index: 1;
+  transition: $defTransition;
+
+  .active & {
+    flex: 4;
+    margin-left: -20px;
+    transform: translateX(0);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin: 1rem 0;
+    background: rgba(86, 182, 234, 0.38);
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #DDEEF8;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $primaryColor;
+  }
+
+  > * {
+    padding: 1rem 1rem 1rem 1.5rem;
+  }
+
+  &_actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &_close-list {
+      @include btn($lightColor, 10px, 50%)
+    }
+  }
+
+  &_list {
+    h4 {
+      margin: 0.5rem 0 2.5rem;
+    }
+  }
+
+  .add-todo {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 1 auto;
+    margin-right: 1rem;
+    border-radius: $smallBRadius;
+    overflow: hidden;
+    background: $lightColor;
+    box-shadow: 4px 4px 11px rgba(0, 133, 255, 0.11);
+    transition: $defTransition;
+
+    &.active {
+      flex: 1;
+
+      input {
+        flex: 1;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      button {
+        margin-left: 0;
+      }
+    }
+
+    input {
+      display: flex;
+      align-items: center;
+      flex: 0;
+      max-width: 0;
+      width: 0;
+      padding: 1rem 1.5rem;
+      border: none;
+      background-color: $lightColor;
+    }
+
+    button {
+      flex: 0 1 auto;
+      margin-left: -48px;
+      @include btn($primaryColor, 1rem, $smallBRadius);
+      transition: $defTransition;
+    }
+  }
+
+  .todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: $defBRadius;
+    background: $lightColor;
+    box-shadow: 4px 4px 11px rgba(0, 133, 255, 0.11);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &_action {
+      button {
+        @include btn($primaryColor);
+
+        &:disabled {
+          background-color: #C7C7C7;
+          cursor: auto;
+        }
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+
+      &_status {
+        @include btn($pendingColor, 4px 16px, $smallBRadius, 14px);
+
+        &.completed {
+          background-color: $successColor;
+        }
+
+        img {
+          margin-right: 12px;
+        }
+      }
+
+      p {
+        margin: 10px 0 0;
+      }
+    }
+  }
+}

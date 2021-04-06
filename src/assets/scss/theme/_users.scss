@@ -1,0 +1,80 @@
+.users {
+  flex: 3;
+  height: 100%;
+  overflow-y: auto;
+  background: $lightColor;
+  transition: $defTransition;
+
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  &_heading {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: $primaryColor;
+    color: $lightColor;
+
+    .active & {
+      padding-right: 20px;
+    }
+
+    & > div {
+      flex: 2;
+      padding: 1.5rem 1rem 2rem;
+      white-space: nowrap;
+      transition: $defTransition;
+
+      &:first-child {
+        flex: 3;
+      }
+
+      .active & {
+        padding: 1.5rem 0.5rem 2rem;
+      }
+    }
+  }
+
+  &_list {
+    .user {
+      display: flex;
+      position: relative;
+      font-weight: 300;
+      cursor: pointer;
+
+      .active & {
+        padding-right: 20px;
+      }
+
+      &:nth-child(even) {
+        background: $lightestColor;
+      }
+
+      &.active, &:hover {
+        background: $lighterColor;
+
+      }
+
+      &.active {
+        color: $primaryColor;
+        font-weight: 700;
+      }
+
+      & > div {
+        flex: 2;
+        padding: 16px 16px 21px;
+        transition: $defTransition;
+
+        .active & {
+          padding: 16px 8px 21px;
+        }
+
+        &:first-child {
+          flex: 3;
+        }
+      }
+    }
+  }
+}
